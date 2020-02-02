@@ -16,6 +16,8 @@ Preload.prototype = {
 
     //this.load.image('blueflower1', 'assets/blueflower1.png');
     this.game.load.image('blueflower1','../assets/images/socks/blueflower1.png')
+    this.game.load.image('clothespile1','../assets/images/obstacles/clothespile1.png')
+    this.game.load.image('clothespile2','../assets/images/obstacles/clothespile2.png')
 
     this.load.image('stl', 'assets/logos/stl.png');
     this.game.load.spritesheet('studio', 'assets/logos/studio.png', 128, 128);

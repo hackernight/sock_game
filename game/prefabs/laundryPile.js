@@ -5,9 +5,11 @@ class LaundryPile extends Phaser.Sprite {
 
   //initialization code in the constructor
   constructor(game, x, y) {
-      super(game, x, y, 'egg', 0);
+      super(game, x, y, 'clothespile1', 0);
       game.physics.enable(this, Phaser.Physics.ARCADE);
       this.frame = 0;
+      console.log("Laundry at " + x + ": " + y);
+      this.scale.setTo(.25,.25);
       game.add.existing(this);
       //this.body.velocity.y = MAX_SPEED;
       // Set Anchor to the center of your sprite
