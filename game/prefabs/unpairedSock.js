@@ -4,8 +4,9 @@ const SPRITE_SIZE=128;
 class UnpairedSock extends Phaser.Sprite {
 
   //initialization code in the constructor
-  constructor(game, x, y) {
-      super(game, x, y, 'blueflower1', 0);
+  constructor(game, x, y, name) {
+      super(game, x, y, name, 0);
+      this.scale.setTo(.25,.25);
       this.frame = 0;
       game.add.existing(this);
       //this.body.velocity.y = MAX_SPEED;

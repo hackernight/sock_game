@@ -15,7 +15,7 @@ Preload.prototype = {
     this.load.image('kidrobot', 'assets/images/player/kidrobot.png');
 
     //this.load.image('blueflower1', 'assets/blueflower1.png');
-    this.game.load.image('blueflower1','../../assets/images/socks/blueflower1.png')
+    this.game.load.image('blueflower1','../assets/images/socks/blueflower1.png')
 
     this.load.image('stl', 'assets/logos/stl.png');
     this.game.load.spritesheet('studio', 'assets/logos/studio.png', 128, 128);
