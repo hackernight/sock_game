@@ -4,8 +4,8 @@ const SPRITE_SIZE=128;
 class LaundryPile extends Phaser.Sprite {
 
   //initialization code in the constructor
-  constructor(game, x, y) {
-      super(game, x, y, 'clothespile1', 0);
+  constructor(game, x, y, name) {
+      super(game, x, y, name, 0);
       game.physics.enable(this, Phaser.Physics.ARCADE);
       this.frame = 0;
       console.log("Laundry at " + x + ": " + y);

@@ -3,6 +3,7 @@
 const UnpairedSock = require('../prefabs/unpairedSock');
 const LaundryPile = require('../prefabs/laundryPile');
 const LostSock = require('../prefabs/lostSock');
+const RockyRobot = require('../prefabs/rockyrobot');
 
 const unpairedSockInterval = 64;
 
@@ -11,6 +12,7 @@ var laundry2;
 var laundry3;
 var lostSock1;
 var lostSock2;
+var robotKid;
 
 var playerLaneY;
   'use strict';
@@ -23,20 +25,21 @@ var playerLaneY;
       this.generateLostSocks();
 
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
-      this.sprite = this.game.add.sprite(this.game.width/2, this.game.height/2, 'kidrobot');
-      this.sprite.inputEnabled = true;
+      robotKid = new RockyRobot(this.game, 100, 1);
+      //this.sprite = this.game.add.sprite(this.game.width/2, this.game.height/2, 'kidrobot');
+      //robotKid = true;
 
-      this.game.physics.arcade.enable(this.sprite);
-      this.sprite.body.collideWorldBounds = true;
-      this.sprite.body.bounce.setTo(1,1);
-      this.sprite.body.velocity.x = this.game.rnd.integerInRange(-500,500);
-      this.sprite.body.velocity.y = this.game.rnd.integerInRange(-500,500);
+      this.game.physics.arcade.enable(robotKid);
+      robotKid.body.collideWorldBounds = true;
+      robotKid.body.bounce.setTo(1,1);
+      robotKid.body.velocity.x = this.game.rnd.integerInRange(-500,500);
+      robotKid.body.velocity.y = this.game.rnd.integerInRange(-500,500);
 
-      this.sprite.events.onInputDown.add(this.clickListener, this);
+      robotKid.events.onInputDown.add(this.clickListener, this);
     },
     update: function() {
-      this.game.physics.arcade.overlap(lostSock1, this.sprite, this.collideSock1, null, this);
-      this.game.physics.arcade.overlap(lostSock2, this.sprite, this.collideSock2, null, this);
+      this.game.physics.arcade.overlap(lostSock1, robotKid, this.collideSock1, null, this);
+      this.game.physics.arcade.overlap(lostSock2, robotKid, this.collideSock2, null, this);
     },
     clickListener: function() {
       this.game.state.start('gameover');
@@ -55,7 +58,7 @@ var playerLaneY;
                              'clothespile1');
      laundry2 = new LaundryPile(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
                             64*this.game.rnd.integerInRange(2, maxTileshigh),
-                            'clothespile1');
+                            'clothespile2');
       laundry3 = new LaundryPile(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
                              64*this.game.rnd.integerInRange(2, maxTileshigh),
                              'clothespile1');
