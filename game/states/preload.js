@@ -13,6 +13,8 @@ Preload.prototype = {
     this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
     this.load.setPreloadSprite(this.asset);
     this.load.image('yeoman', 'assets/yeoman-logo.png');
+    this.load.image('stl', 'assets/stl.png');
+    this.load.spritesheet('logo', 'assets/studio.png', 128, 128);
 
   },
   create: function() {
@@ -20,7 +22,7 @@ Preload.prototype = {
   },
   update: function() {
     if(!!this.ready) {
-      this.game.state.start('menu');
+      this.game.state.start('splashscreen');
     }
   },
   onLoadComplete: function() {

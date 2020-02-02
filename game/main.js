@@ -4,6 +4,7 @@ import Play from './states/play';
 import Menu from './states/menu';
 import Preloader from './states/preload';
 import Gameover from './states/gameover';
+import SplashScreen from './states/splashscreen';
 
 //global variables
 var BootState, GameoverState, MenuState, PlayState, PreloadState, game;
@@ -21,7 +22,8 @@ window.onload = function () {
   game.state.add('play', new Play());
   
   game.state.add('preload', new Preloader());
-  
 
+  game.state.add('splashscreen', new SplashScreen());
+  
   game.state.start('boot');
 };
