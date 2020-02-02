@@ -1,8 +1,19 @@
 
+
+const UnpairedSock = require('../prefabs/unpairedSock');
+
+var playerLaneY;
   'use strict';
   function Play() {}
   Play.prototype = {
     create: function() {
+
+
+      var height = this.game.height
+      playerLaneY = height - 50;
+      var sock1 = new UnpairedSock(this.game, playerLaneY, 0);
+
+
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
       this.sprite = this.game.add.sprite(this.game.width/2, this.game.height/2, 'kidrobot');
       this.sprite.inputEnabled = true;
