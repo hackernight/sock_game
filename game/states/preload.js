@@ -13,8 +13,8 @@ Preload.prototype = {
     this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
     this.load.setPreloadSprite(this.asset);
     this.load.image('yeoman', 'assets/yeoman-logo.png');
-    this.load.image('stl', 'assets/stl.png');
-    this.load.spritesheet('logo', 'assets/studio.png', 128, 128);
+    this.load.image('stl', 'assets/logos/stl.png');
+    this.game.load.spritesheet('studio', 'assets/logos/studio.png', 128, 128);
 
   },
   create: function() {
