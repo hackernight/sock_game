@@ -13,8 +13,12 @@ Preload.prototype = {
     this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
     this.load.setPreloadSprite(this.asset);
     this.load.image('yeoman', 'assets/yeoman-logo.png');
+
     //this.load.image('blueflower1', 'assets/blueflower1.png');
     this.game.load.image('blueflower1','../../assets/images/socks/blueflower1.png')
+
+    this.load.image('stl', 'assets/logos/stl.png');
+    this.game.load.spritesheet('studio', 'assets/logos/studio.png', 128, 128);
 
   },
   create: function() {
@@ -22,7 +26,7 @@ Preload.prototype = {
   },
   update: function() {
     if(!!this.ready) {
-      this.game.state.start('menu');
+      this.game.state.start('splashscreen');
     }
   },
   onLoadComplete: function() {
