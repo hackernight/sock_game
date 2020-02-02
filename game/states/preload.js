@@ -19,6 +19,7 @@ Preload.prototype = {
 
     this.load.image('stl', 'assets/logos/stl.png');
     this.game.load.spritesheet('studio', 'assets/logos/studio.png', 128, 128);
+    this.load.audio('horn', ['assets/sound/Bike_Horn.wav']);
 
   },
   create: function() {
