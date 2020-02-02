@@ -5,8 +5,7 @@ class UnpairedSock extends Phaser.Sprite {
 
   //initialization code in the constructor
   constructor(game, x, y) {
-      super(game, x, y, 'egg', 0);
-      game.physics.enable(this, Phaser.Physics.ARCADE);
+      super(game, x, y, 'blueflower1', 0);
       this.frame = 0;
       game.add.existing(this);
       //this.body.velocity.y = MAX_SPEED;
@@ -15,16 +14,10 @@ class UnpairedSock extends Phaser.Sprite {
 
 }
 
-  //Code ran on each frame of game
-  /*update() {
-    if (this.body.y < this.eggLane){
-      this.body.velocity.y += 10;
-    }
-    else {
-      this.body.velocity.y = 0;
-      this.body.y = this.eggLane;
-    }
-  }*/
+//Unpaired socks will wiggle a little
+  update() {
+    this.angle = 30 + Math.sin(this.game.time.time * 1/500) * 5
+  }
 
 
 }
