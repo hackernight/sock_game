@@ -5,6 +5,13 @@ const LaundryPile = require('../prefabs/laundryPile');
 const LostSock = require('../prefabs/lostSock');
 
 const unpairedSockInterval = 64;
+
+var laundry1;
+var laundry2;
+var laundry3;
+var lostSock1;
+var lostSock2;
+
 var playerLaneY;
   'use strict';
   function Play() {}
@@ -30,7 +37,8 @@ var playerLaneY;
       this.sprite.events.onInputDown.add(this.clickListener, this);
     },
     update: function() {
-
+      this.game.physics.arcade.overlap(lostSock1, this.sprite, this.collideSock1, null, this);
+      this.game.physics.arcade.overlap(lostSock2, this.sprite, this.collideSock2, null, this);
     },
     clickListener: function() {
       this.game.state.start('gameover');
@@ -44,26 +52,37 @@ var playerLaneY;
       var maxTileshigh = (this.game.height/64)-1;
 
 
-      var laundry1 = new LaundryPile(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
+      laundry1 = new LaundryPile(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
                              64*this.game.rnd.integerInRange(2, maxTileshigh),
                              'clothespile1');
-     var laundry2 = new LaundryPile(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
+     laundry2 = new LaundryPile(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
                             64*this.game.rnd.integerInRange(2, maxTileshigh),
                             'clothespile1');
-      var laundry3 = new LaundryPile(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
+      laundry3 = new LaundryPile(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
                              64*this.game.rnd.integerInRange(2, maxTileshigh),
                              'clothespile1');
     },
     generateLostSocks: function(){
       var maxTileslong = (this.game.width/64)-1;
       var maxTileshigh = (this.game.height/64)-1;
-      var lostsock1 = new LostSock(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
+      lostSock1 = new LostSock(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
                              64*this.game.rnd.integerInRange(2, maxTileshigh),
                              'blueflower2');
-     var lostsock2 = new LostSock(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
+     lostSock2 = new LostSock(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
                             64*this.game.rnd.integerInRange(2, maxTileshigh),
                             'lily2');
 
+    },
+    collideSock1: function(socky, rocky){
+      console.log("Hit a sock");
+      lostSock1.destroy();
+      var sock1 = new UnpairedSock(this.game, 35, 55, 'blueflower1');
+
+    },
+    collideSock2: function(socky, rocky){
+      console.log("Hit a sock");
+      lostSock2.destroy();
+      var sock2 = new UnpairedSock(this.game, 35 + unpairedSockInterval, 55, 'lily1');
     }
   };
 
