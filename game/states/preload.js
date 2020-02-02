@@ -16,13 +16,16 @@ Preload.prototype = {
 
     //this.load.image('blueflower1', 'assets/blueflower1.png');
     this.game.load.image('blueflower1','../assets/images/socks/blueflower1.png')
+    this.game.load.image('blueflower2','../assets/images/socks/blueflower2.png')
+    this.game.load.image('lily1','../assets/images/socks/lily1.png')
+    this.game.load.image('lily2','../assets/images/socks/lily2.png')
     this.game.load.image('clothespile1','../assets/images/obstacles/clothespile1.png')
     this.game.load.image('clothespile2','../assets/images/obstacles/clothespile2.png')
 
     this.load.image('stl', 'assets/logos/stl.png');
     this.game.load.spritesheet('studio', 'assets/logos/studio.png', 128, 128);
     this.game.load.spritesheet('kidrobot','assets/images/player/kidrobot.png',256,512,4)
-  
+
     this.load.audio('horn', ['assets/sound/Bike_Horn.wav']);
 
   },
