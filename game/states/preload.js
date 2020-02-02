@@ -15,11 +15,10 @@ Preload.prototype = {
     this.load.image('yeoman', 'assets/yeoman-logo.png');
 
     //this.load.image('blueflower1', 'assets/blueflower1.png');
-    this.game.load.image('blueflower1','../../assets/images/socks/blueflower1.png')
+    this.game.load.image('blueflower1','../assets/images/socks/blueflower1.png')
 
     this.load.image('stl', 'assets/logos/stl.png');
     this.game.load.spritesheet('studio', 'assets/logos/studio.png', 128, 128);
-    this.load.audio('horn', ['assets/sound/Bike_Horn.wav']);
 
   },
   create: function() {

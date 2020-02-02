@@ -2,6 +2,7 @@
 
 const UnpairedSock = require('../prefabs/unpairedSock');
 
+const unpairedSockInterval = 64;
 var playerLaneY;
   'use strict';
   function Play() {}
@@ -9,9 +10,8 @@ var playerLaneY;
     create: function() {
 
 
-      var height = this.game.height
-      playerLaneY = height - 50;
-      var sock1 = new UnpairedSock(this.game, playerLaneY, 0);
+      var sock1 = new UnpairedSock(this.game, 30, 50, 'blueflower1');
+      var sock2 = new UnpairedSock(this.game, 30 + unpairedSockInterval, 50, 'blueflower1');
 
 
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
