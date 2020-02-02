@@ -19,8 +19,8 @@ Preload.prototype = {
 
     this.load.image('stl', 'assets/logos/stl.png');
     this.game.load.spritesheet('studio', 'assets/logos/studio.png', 128, 128);
-    this.game.load.spritesheet('kidrobot','assets/images/player/kidrobot.png',256,512,4)
-  
+    this.game.load.spritesheet('kidrobot','assets/images/player/kidrobot.png',256,512)
+
     this.load.audio('horn', ['assets/sound/Bike_Horn.wav']);
 
   },

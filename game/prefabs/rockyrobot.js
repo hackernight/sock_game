@@ -13,9 +13,11 @@ class RockyRobot extends Phaser.Sprite {
       super(game, SPRITE_SIZE, y, 'rocky', frame);
 
       this.scale.setTo(2,2)
+      //this.animations.add('walk', [0,1,2], 2, true);
+      //this.animations.play('walk');
       console.log("Beep Boop I am Bot")
       game.physics.enable(this, Phaser.Physics.ARCADE);
-      this.frame = 0;
+
       game.add.existing(this);
       // Set Anchor to the center of your sprite
       this.anchor.setTo(.5);
@@ -27,8 +29,6 @@ class RockyRobot extends Phaser.Sprite {
       //this.sockGetSound.volume = 1
 
 
-this.animations.add('walk');
-kidrobot.animations.play("walk",10, true)
       //this.animations.add('throw', [8,9,10,11,12,13,14,15], 20, false);
 
       //this.facing = 'right';

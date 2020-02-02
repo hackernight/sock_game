@@ -16,8 +16,6 @@ var playerLaneY;
 
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
       this.sprite = this.game.add.sprite(this.game.width/2, this.game.height/2, 'kidrobot');
-      
-      this.sprite.animations.play('walk',10, true);
       this.sprite.inputEnabled = true;
 
       this.game.physics.arcade.enable(this.sprite);
