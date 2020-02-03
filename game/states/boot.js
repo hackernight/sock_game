@@ -10,6 +10,11 @@ Boot.prototype = {
   },
   create: function() {
     this.game.input.maxPointers = 1;
+    this.game.ba = {
+    level: 1,
+    win: false,
+    lose: false
+  }
     this.game.state.start('preload');
   }
 };

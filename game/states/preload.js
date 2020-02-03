@@ -22,6 +22,15 @@ Preload.prototype = {
     this.game.load.image('clothespile1','../assets/images/obstacles/clothespile1.png')
     this.game.load.image('clothespile2','../assets/images/obstacles/clothespile2.png')
 
+
+    this.game.load.image('backstory1','../assets/images/cutscenes/backstory1_happyfamily.png')
+    this.game.load.image('backstory2','../assets/images/cutscenes/backstory2_newshoes.png')
+    this.game.load.image('backstory3','../assets/images/cutscenes/backstory3_inringdefeat.png')
+    this.game.load.image('victory1','../assets/images/cutscenes/victory.png')
+    this.game.load.image('victory2','../assets/images/cutscenes/victory2.png')
+
+
+
     this.game.load.image('puddle','../assets/images/obstacles/puddle1.png')
     this.load.image('stl', 'assets/logos/stl.png');
     this.game.load.spritesheet('studio', 'assets/logos/studio.png', 128, 128);
