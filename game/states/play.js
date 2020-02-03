@@ -60,27 +60,29 @@ var playerLaneY;
       }
     },
     generateSocks: function(){
+      sockList=[];
+      this.generateSockPair(1);
+
+      if (this.game.ba.level > 2){
+        this.generateSockPair(2);
+      }
+      if (this.game.ba.level > 3){
+        this.generateSockPair(3);
+      }
+      if (this.game.ba.level > 4){
+        this.generateSockPair(4);
+      }
+    },
+    generateSockPair: function(sockNumber){
 
       var maxTileslong = (this.game.width/64)-1;
       var maxTileshigh = (this.game.height/64)-1;
-      var sockNumber = 1; //incrementing this with each sock we add, for ease of copy-pasting
+      var sock = new UnpairedSock(this.game, 30 + (unpairedSockInterval * (sockNumber -1)), 50, this.sockImageName(sockNumber) + "1");
+      var lostSock = new LostSock(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
+                            64*this.game.rnd.integerInRange(2, maxTileshigh),
+                            this.sockImageName(sockNumber) + "2", sockNumber);
 
-      sockList=[];
-      var sock1 = new UnpairedSock(this.game, 30, 50, this.sockImageName(1) + "1");
-      var lostSock1 = new LostSock(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
-                             64*this.game.rnd.integerInRange(2, maxTileshigh),
-                             this.sockImageName(1) + "2", 1);
-      sockList.push(lostSock1);
-
-      if (this.game.ba.level > 2){
-        sockNumber = 2;
-        var sock2 = new UnpairedSock(this.game, 30 + unpairedSockInterval, 50, this.sockImageName(sockNumber) + "1");
-        var lostSock2 = new LostSock(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
-                              64*this.game.rnd.integerInRange(2, maxTileshigh),
-                              this.sockImageName(sockNumber) + "2", 2);
-
-       sockList.push(lostSock2);
-      }
+     sockList.push(lostSock);
     },
     sockImageName: function(num){
       if (num==1){
@@ -145,14 +147,10 @@ var playerLaneY;
         if (socky.sockNumber()== mysock.sockNumber()){
           console.log("it was sock index " + i);
 
-          if (mysock.sockNumber() ==2){
-          var sock1 = new UnpairedSock(this.game, 35 + unpairedSockInterval, 55, this.sockImageName(mysock.sockNumber()) + "1");
+          var sock1 = new UnpairedSock(this.game, 35 + (unpairedSockInterval * (mysock.sockNumber() -1)), 55,
+                                      this.sockImageName(mysock.sockNumber()) + "1");
 
-          }
-          else{
-          var sock1 = new UnpairedSock(this.game, 35, 55, this.sockImageName(mysock.sockNumber()) + "1");
 
-          }
           socky.destroy();
 
           //sockList.splice(i,1);
