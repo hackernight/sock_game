@@ -133,7 +133,7 @@ var playerLaneY;
         let mysock = sockList[i];
         if (socky.sockNumber()== mysock.sockNumber()){
 
-          var sock1 = new UnpairedSock(this.game, 35 + (unpairedSockInterval * (mysock.sockNumber() -1)), 55,
+          var sock1 = new UnpairedSock(this.game, 40 + (unpairedSockInterval * (mysock.sockNumber() -1)), 60,
                                       this.game.ba.sockImageName(mysock.sockNumber()) + "1");
 
           this.game.ba.numberOfSocksMatched += 1;
