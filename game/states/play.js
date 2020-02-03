@@ -37,7 +37,6 @@ var playerLaneY;
       //robotKid.body.velocity.x = this.game.rnd.integerInRange(-500,500);
       //robotKid.body.velocity.y = this.game.rnd.integerInRange(-500,500);
 
-      robotKid.events.onInputDown.add(this.clickListener, this);
     },
     update: function() {
       this.game.physics.arcade.overlap(lostSock1, robotKid, this.collideSock1, null, this);
@@ -47,9 +46,6 @@ var playerLaneY;
       for (const laundry of laundryList) {
         this.game.physics.arcade.collide(robotKid, laundry)
       }
-    },
-    clickListener: function() {
-      this.game.state.start('gameover');
     },
     generateSocksToMatch: function(){
       var sock1 = new UnpairedSock(this.game, 30, 50, 'blueflower1');
@@ -100,7 +96,7 @@ var playerLaneY;
       var sock2 = new UnpairedSock(this.game, 35 + unpairedSockInterval, 55, 'lily1');
     },
     collideExit: function(exit, rocky){
-      this.game.state.start('gameover');
+      this.game.state.start('backstory');
     }
   };
 

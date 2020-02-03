@@ -24,7 +24,7 @@ Preload.prototype = {
 
     this.load.image('stl', 'assets/logos/stl.png');
     this.game.load.spritesheet('studio', 'assets/logos/studio.png', 128, 128);
-    this.game.load.spritesheet('kidrobot','assets/images/player/kidrobot.png',256,512)
+    this.game.load.spritesheet('kidrobot','assets/images/player/kidrobot.png',256,340)
 
 
     this.game.load.image('exit','../assets/images/environment/exit.png')
