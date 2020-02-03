@@ -6,6 +6,7 @@ import Preloader from './states/preload';
 import Gameover from './states/gameover';
 import SplashScreen from './states/splashscreen';
 import Backstory from './states/backstory';
+import GameoverLose from './states/gameoverLose';
 
 //global variables
 var BootState, GameoverState, MenuState, PlayState, PreloadState, game;
@@ -17,6 +18,7 @@ window.onload = function () {
   game.state.add('boot', new Boot());
 
   game.state.add('gameover', new Gameover());
+  game.state.add('gameoverLose', new GameoverLose());
 
   game.state.add('menu', new Menu());
 

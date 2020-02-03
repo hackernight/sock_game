@@ -20,6 +20,7 @@ class RockyRobot extends Phaser.Sprite {
       game.add.existing(this);
       // Set Anchor to the center of your sprite
       this.anchor.setTo(.5);
+      this.body.setSize(120, 300, 45, 10);
       this.facing = 'left';
 //dino-chuck-roar
       //this.wallCollisionSound = this.game.add.audio('wall-bump')
@@ -111,12 +112,12 @@ class RockyRobot extends Phaser.Sprite {
           }
     }
 
-    if (this.left < 0 || this.right > this.game.width + this.width) {
+    /*if (this.left < 0 || this.right > this.game.width + this.width) {
       this.body.velocity.x = 0
     }
     if (this.top < 0 || this.bottom > this.game.width + this.width) {
       this.body.velocity.y = 0
-    }
+    }*/
   }
 
 movingUp(){

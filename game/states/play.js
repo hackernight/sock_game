@@ -5,11 +5,13 @@ const LaundryPile = require('../prefabs/laundryPile');
 const LostSock = require('../prefabs/lostSock');
 const RockyRobot = require('../prefabs/rockyrobot');
 const Exit = require('../prefabs/exit');
+const Puddle = require('../prefabs/puddle');
 
 const unpairedSockInterval = 64;
 
 
 var laundryList = [];
+var puddleList = [];
 var lostSock1;
 var lostSock2;
 var robotKid;
@@ -23,6 +25,7 @@ var playerLaneY;
 
       this.generateSocksToMatch();
       this.generateLaundry();
+      this.generatePuddles();
       this.generateLostSocks();
       this.generateExit();
 
@@ -46,6 +49,9 @@ var playerLaneY;
       for (const laundry of laundryList) {
         this.game.physics.arcade.collide(robotKid, laundry)
       }
+      for (const puddle of puddleList) {
+        this.game.physics.arcade.overlap(robotKid, puddle, this.loseGame, null, this)
+      }
     },
     generateSocksToMatch: function(){
       var sock1 = new UnpairedSock(this.game, 30, 50, 'blueflower1');
@@ -62,6 +68,20 @@ var playerLaneY;
                                  64*this.game.rnd.integerInRange(2, maxTileshigh),
                                  'clothespile1');
           laundryList.push(laundry);
+        }
+
+
+    },
+    generatePuddles: function(){
+      var maxTileslong = (this.game.width/64)-1;
+      var maxTileshigh = (this.game.height/64)-1;
+
+      puddleList=[];
+      var puddleCount=3;
+      for (let i =0; i<puddleCount; i++){
+          var puddle = new Puddle(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
+                                 64*this.game.rnd.integerInRange(2, maxTileshigh));
+          puddleList.push(puddle);
         }
 
 
@@ -97,6 +117,9 @@ var playerLaneY;
     },
     collideExit: function(exit, rocky){
       this.game.state.start('backstory');
+    },
+    loseGame: function(exit, rocky){
+      this.game.state.start('gameoverLose');
     }
   };
 
