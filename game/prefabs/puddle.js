@@ -13,7 +13,7 @@ class Puddle extends Phaser.Sprite {
       super(game, x, y, 'puddle', 0);
       game.physics.enable(this, Phaser.Physics.ARCADE);
       this.frame = 0;
-      var scale = game.rnd.integerInRange(10, 25);
+      var scale = game.rnd.integerInRange(20, 25);
       this.scale.setTo(scale/100,scale/100);
       this.angle = game.rnd.integerInRange(-5, 5);
       this.body.immovable=true;

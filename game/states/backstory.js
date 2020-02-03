@@ -14,7 +14,7 @@ Backstory.prototype = {
 
     var background = this.getBackgroundImage();
     console.log("Background image is " + background)
-    new BackgroundImage(this.game, background);
+    new BackgroundImage(this.game, background, .75);
 
     /*var style = { font: '65px Arial', fill: '#ffffff', align: 'center'};
     this.titleText = this.game.add.text(this.game.world.centerX,100, 'Backstory', style);

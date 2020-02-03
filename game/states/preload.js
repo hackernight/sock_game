@@ -37,6 +37,7 @@ Preload.prototype = {
     this.game.load.image('victory2','../assets/images/cutscenes/victory2.png')
 
 
+    this.game.load.image('floor','../assets/images/environment/floor2.png')
 
     this.game.load.image('puddle','../assets/images/obstacles/puddle1.png')
     this.load.image('stl', 'assets/logos/stl.png');

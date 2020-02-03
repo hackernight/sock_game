@@ -6,6 +6,7 @@ const LostSock = require('../prefabs/lostSock');
 const RockyRobot = require('../prefabs/rockyrobot');
 const Exit = require('../prefabs/exit');
 const Puddle = require('../prefabs/puddle');
+import BackgroundImage from '../prefabs/backgroundImage'
 
 const unpairedSockInterval = 64;
 
@@ -21,6 +22,8 @@ var playerLaneY;
   function Play() {}
   Play.prototype = {
     create: function() {
+
+      new BackgroundImage(this.game, 'floor', 1.75);
 
       this.generateExit();
       this.generatePuddles();
@@ -139,13 +142,10 @@ var playerLaneY;
 
     },
     collideSock: function(rocky,socky ){
-      console.log("Hit a sock, " + sockList.length + " socks in the list");
 
       for (let i=sockList.length-1; i>=0; i--){
         let mysock = sockList[i];
-          console.log("checking mysock number " + mysock.sockNumber() + ", socky number is " + socky.sockNumber());
         if (socky.sockNumber()== mysock.sockNumber()){
-          console.log("it was sock index " + i);
 
           var sock1 = new UnpairedSock(this.game, 35 + (unpairedSockInterval * (mysock.sockNumber() -1)), 55,
                                       this.sockImageName(mysock.sockNumber()) + "1");

@@ -7,7 +7,6 @@ class LostSock extends Phaser.Sprite {
   constructor(game, x, y, name, socknum) {
       super(game, x, y, name, 0);
       this.sockNum = socknum;
-      console.log("initilizing sock number " + socknum);
       game.physics.enable(this, Phaser.Physics.ARCADE);
       this.scale.setTo(.10,.10);
       this.frame = 0;

@@ -1,4 +1,5 @@
 
+import BackgroundImage from '../prefabs/backgroundImage'
 'use strict';
 function Menu() {}
 
@@ -7,6 +8,8 @@ Menu.prototype = {
 
   },
   create: function() {
+
+          new BackgroundImage(this.game, 'floor', 1.75);
     var style = { font: '65px Arial', fill: '#ffffff', align: 'center'};
     this.sprite = this.game.add.sprite(this.game.world.centerX, 138, 'kidrobot');
     this.sprite.anchor.setTo(0.5, 0.5);

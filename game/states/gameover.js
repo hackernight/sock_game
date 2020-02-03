@@ -15,7 +15,7 @@ GameOver.prototype = {
     if (this.game.ba.win==true){
       backgroundImage = "victory2"
     }
-    new BackgroundImage(this.game, backgroundImage);
+    new BackgroundImage(this.game, backgroundImage, .75);
     //reset variables, either condition
     this.game.ba.level=1;
     this.game.ba.numberOfSocksMatched = 0;

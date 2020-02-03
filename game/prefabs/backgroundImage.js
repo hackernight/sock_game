@@ -1,6 +1,6 @@
 class BackgroundImage extends Phaser.Sprite {
 
-  constructor(game, pic) {
+  constructor(game, pic, scale) {
 
 
     super(game, game.world.centerX, game.world.centerY, pic)
@@ -8,7 +8,7 @@ class BackgroundImage extends Phaser.Sprite {
     this.target = game.world.centerY - 10
     this.anchor.setTo(0.5)
     game.add.existing(this)
-    this.scale.setTo(.75,.75);
+    this.scale.setTo(scale, scale);
 
     /*this.events.onDestroy.add(() => {
       this.bg.remove()
