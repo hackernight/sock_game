@@ -4,6 +4,7 @@ const UnpairedSock = require('../prefabs/unpairedSock');
 const LaundryPile = require('../prefabs/laundryPile');
 const LostSock = require('../prefabs/lostSock');
 const RockyRobot = require('../prefabs/rockyrobot');
+const Exit = require('../prefabs/exit');
 
 const unpairedSockInterval = 64;
 
@@ -13,6 +14,7 @@ var laundry3;
 var lostSock1;
 var lostSock2;
 var robotKid;
+var exit;
 
 var playerLaneY;
   'use strict';
@@ -23,6 +25,7 @@ var playerLaneY;
       this.generateSocksToMatch();
       this.generateLaundry();
       this.generateLostSocks();
+      this.generateExit();
 
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
       robotKid = new RockyRobot(this.game, 100, 1);
@@ -40,6 +43,7 @@ var playerLaneY;
     update: function() {
       this.game.physics.arcade.overlap(lostSock1, robotKid, this.collideSock1, null, this);
       this.game.physics.arcade.overlap(lostSock2, robotKid, this.collideSock2, null, this);
+      this.game.physics.arcade.overlap(exit, robotKid, this.collideExit, null, this);
     },
     clickListener: function() {
       this.game.state.start('gameover');
@@ -74,6 +78,13 @@ var playerLaneY;
                             'lily2');
 
     },
+    generateExit: function(){
+      var maxTileslong = (this.game.width/64)-1;
+      var maxTileshigh = (this.game.height/64)-1;
+      exit = new Exit(this.game, this.game.width-64,
+                             64*this.game.rnd.integerInRange(2, maxTileshigh));
+
+    },
     collideSock1: function(socky, rocky){
       console.log("Hit a sock");
       lostSock1.destroy();
@@ -84,6 +95,9 @@ var playerLaneY;
       console.log("Hit a sock");
       lostSock2.destroy();
       var sock2 = new UnpairedSock(this.game, 35 + unpairedSockInterval, 55, 'lily1');
+    },
+    collideExit: function(exit, rocky){
+      this.game.state.start('gameover');
     }
   };
 
