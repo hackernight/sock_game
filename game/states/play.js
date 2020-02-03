@@ -12,8 +12,7 @@ const unpairedSockInterval = 64;
 
 var laundryList = [];
 var puddleList = [];
-var lostSock1;
-var lostSock2;
+var sockList=[];
 var robotKid;
 var exit;
 
@@ -23,11 +22,10 @@ var playerLaneY;
   Play.prototype = {
     create: function() {
 
-      this.generateSocksToMatch();
       this.generateExit();
       this.generatePuddles();
       this.generateLaundry();
-      this.generateLostSocks();
+      this.generateSocks();
 
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
       robotKid = new RockyRobot(this.game, 130, 130);
@@ -42,8 +40,9 @@ var playerLaneY;
 
     },
     update: function() {
-      this.game.physics.arcade.overlap(lostSock1, robotKid, this.collideSock1, null, this);
-      this.game.physics.arcade.overlap(lostSock2, robotKid, this.collideSock2, null, this);
+      for (const sock of sockList) {
+        this.game.physics.arcade.overlap(robotKid, sock, this.collideSock, null, this)
+      }
       this.game.physics.arcade.overlap(exit, robotKid, this.collideExit, null, this);
 
       for (const laundry of laundryList) {
@@ -60,16 +59,49 @@ var playerLaneY;
         }
       }
     },
-    generateSocksToMatch: function(){
-      var sock1 = new UnpairedSock(this.game, 30, 50, 'blueflower1');
-      var sock2 = new UnpairedSock(this.game, 30 + unpairedSockInterval, 50, 'lily1');
+    generateSocks: function(){
+
+      var maxTileslong = (this.game.width/64)-1;
+      var maxTileshigh = (this.game.height/64)-1;
+      var sockNumber = 1; //incrementing this with each sock we add, for ease of copy-pasting
+
+      sockList=[];
+      var sock1 = new UnpairedSock(this.game, 30, 50, this.sockImageName(1) + "1");
+      var lostSock1 = new LostSock(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
+                             64*this.game.rnd.integerInRange(2, maxTileshigh),
+                             this.sockImageName(1) + "2", 1);
+      sockList.push(lostSock1);
+
+      if (this.game.ba.level > 2){
+        sockNumber = 2;
+        var sock2 = new UnpairedSock(this.game, 30 + unpairedSockInterval, 50, this.sockImageName(sockNumber) + "1");
+        var lostSock2 = new LostSock(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
+                              64*this.game.rnd.integerInRange(2, maxTileshigh),
+                              this.sockImageName(sockNumber) + "2", 2);
+
+       sockList.push(lostSock2);
+      }
+    },
+    sockImageName: function(num){
+      if (num==1){
+        return 'blueflower';
+      }
+      if (num==2){
+        return 'lily';
+      }
+      if (num==3){
+        return 'parasols';
+      }
+      if (num==4){
+        return 'purple';
+      }
     },
     generateLaundry: function(){
       var maxTileslong = (this.game.width/64)-1;
       var maxTileshigh = (this.game.height/64)-1;
 
       laundryList=[];
-      var laundryCount=20;
+      var laundryCount=5 * this.game.ba.level;
       for (let i =0; i<laundryCount; i++){
         var sprite = 'clothespile1'
         if (i%2==0) {
@@ -88,24 +120,13 @@ var playerLaneY;
       var maxTileshigh = (this.game.height/64)-1;
 
       puddleList=[];
-      var puddleCount=3;
+      var puddleCount=this.game.ba.level - 1;
       for (let i =0; i<puddleCount; i++){
           var puddle = new Puddle(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
                                  64*this.game.rnd.integerInRange(2, maxTileshigh));
           puddleList.push(puddle);
         }
 
-
-    },
-    generateLostSocks: function(){
-      var maxTileslong = (this.game.width/64)-1;
-      var maxTileshigh = (this.game.height/64)-1;
-      lostSock1 = new LostSock(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
-                             64*this.game.rnd.integerInRange(2, maxTileshigh),
-                             'blueflower2');
-     lostSock2 = new LostSock(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
-                            64*this.game.rnd.integerInRange(2, maxTileshigh),
-                            'lily2');
 
     },
     generateExit: function(){
@@ -115,17 +136,32 @@ var playerLaneY;
                              64*this.game.rnd.integerInRange(2, maxTileshigh));
 
     },
-    collideSock1: function(socky, rocky){
-      console.log("Hit a sock");
-      lostSock1.destroy();
-      var sock1 = new UnpairedSock(this.game, 35, 55, 'blueflower1');
+    collideSock: function(rocky,socky ){
+      console.log("Hit a sock, " + sockList.length + " socks in the list");
+
+      for (let i=sockList.length-1; i>=0; i--){
+        let mysock = sockList[i];
+          console.log("checking mysock number " + mysock.sockNumber() + ", socky number is " + socky.sockNumber());
+        if (socky.sockNumber()== mysock.sockNumber()){
+          console.log("it was sock index " + i);
+
+          if (mysock.sockNumber() ==2){
+          var sock1 = new UnpairedSock(this.game, 35 + unpairedSockInterval, 55, this.sockImageName(mysock.sockNumber()) + "1");
+
+          }
+          else{
+          var sock1 = new UnpairedSock(this.game, 35, 55, this.sockImageName(mysock.sockNumber()) + "1");
+
+          }
+          socky.destroy();
+
+          //sockList.splice(i,1);
+        }
+      }
+
 
     },
-    collideSock2: function(socky, rocky){
-      console.log("Hit a sock");
-      lostSock2.destroy();
-      var sock2 = new UnpairedSock(this.game, 35 + unpairedSockInterval, 55, 'lily1');
-    },
+
     collideExit: function(exit, rocky){
       this.game.state.start('backstory');
     },

@@ -19,6 +19,10 @@ Preload.prototype = {
     this.game.load.image('blueflower2','../assets/images/socks/blueflower2.png')
     this.game.load.image('lily1','../assets/images/socks/lily1.png')
     this.game.load.image('lily2','../assets/images/socks/lily2.png')
+    this.game.load.image('parasols1','../assets/images/socks/parasols1.png')
+    this.game.load.image('parasols2','../assets/images/socks/parasols2.png')
+    this.game.load.image('purple1','../assets/images/socks/purple1.png')
+    this.game.load.image('purple2','../assets/images/socks/purple2.png')
     this.game.load.image('clothespile1','../assets/images/obstacles/clothespile1.png')
     this.game.load.image('clothespile2','../assets/images/obstacles/clothespile2.png')
 

@@ -4,8 +4,10 @@ const SPRITE_SIZE=128;
 class LostSock extends Phaser.Sprite {
 
   //initialization code in the constructor
-  constructor(game, x, y, name) {
+  constructor(game, x, y, name, socknum) {
       super(game, x, y, name, 0);
+      this.sockNum = socknum;
+      console.log("initilizing sock number " + socknum);
       game.physics.enable(this, Phaser.Physics.ARCADE);
       this.scale.setTo(.10,.10);
       this.frame = 0;
@@ -14,6 +16,10 @@ class LostSock extends Phaser.Sprite {
       // Set Anchor to the center of your sprite
       this.anchor.setTo(.5);
 
+}
+
+sockNumber(){
+  return this.sockNum;
 }
 
   //Code ran on each frame of game
