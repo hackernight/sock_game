@@ -31,12 +31,20 @@ class LaundryPile extends Phaser.Sprite {
 
   //Code ran on each frame of game
   update() {
-    if (this.body.velocity.y!=0){
+
+    if (this.body.velocity.y != 0){
+      this.body.velocity.y -= this.body.velocity.y * .1;
+    }
+    if (this.body.velocity.x != 0){
+      this.body.velocity.x -= this.body.velocity.x * .1;
+    }
+
+    /*if (this.body.velocity.y!=0){
       this.body.velocity.y = this.body.velocity.y/2;
     }
     if (this.body.velocity.x!=0){
       this.body.velocity.x = this.body.velocity.y/2;
-    }
+    }*/
   }
 
 

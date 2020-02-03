@@ -5,10 +5,10 @@ class Puddle extends Phaser.Sprite {
 
   //initialization code in the constructor
   constructor(game, x, y, name) {
-    if (x+y < 300){
+    if (x+y < 500){
       //don't be in the very top left
-      x =x+128;
-      y=y+128;
+      x =x+256;
+      y=y+256;
     }
       super(game, x, y, 'puddle', 0);
       game.physics.enable(this, Phaser.Physics.ARCADE);
@@ -21,10 +21,9 @@ class Puddle extends Phaser.Sprite {
       //this.body.velocity.y = MAX_SPEED;
       // Set Anchor to the center of your sprite
       this.anchor.setTo(.5);
-      this.body.setSize(this.body.width * .9, this.body.height * .9, 10, 10);
+      this.body.setSize(this.body.width * .75, this.body.height * .75, 0, 0);
 
 }
-
 
 
 }

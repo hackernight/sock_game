@@ -88,7 +88,7 @@ class RockyRobot extends Phaser.Sprite {
     if (this.movingUp())
     {
           this.body.velocity.y -= ACCELERATION
-          this.body.velocity.y = Math.min(this.body.velocity.y, -MAX_VELOCITY)
+          this.body.velocity.y = Math.max(this.body.velocity.y, -MAX_VELOCITY)
     }
     if (this.movingDown())
     {
