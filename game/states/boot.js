@@ -15,7 +15,22 @@ Boot.prototype = {
     win: false,
     lose: false,
     numberOfSocksThisLevel: 1,
-    numberOfSocksMatched: 0
+    numberOfSocksMatched: 0,
+    sockImageName: function(num){
+      if (num==1){
+        return 'blueflower';
+      }
+      if (num==2){
+        return 'lily';
+      }
+      if (num==3){
+        return 'parasols';
+      }
+      if (num==4){
+        return 'purple';
+      }
+    }
+    
   }
     this.game.state.start('preload');
   }

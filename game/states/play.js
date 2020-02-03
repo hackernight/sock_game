@@ -80,26 +80,12 @@ var playerLaneY;
 
       var maxTileslong = (this.game.width/64)-1;
       var maxTileshigh = (this.game.height/64)-1;
-      var sock = new UnpairedSock(this.game, 30 + (unpairedSockInterval * (sockNumber -1)), 50, this.sockImageName(sockNumber) + "1");
+      var sock = new UnpairedSock(this.game, 30 + (unpairedSockInterval * (sockNumber -1)), 50, this.game.ba.sockImageName(sockNumber) + "1");
       var lostSock = new LostSock(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
                             64*this.game.rnd.integerInRange(2, maxTileshigh),
-                            this.sockImageName(sockNumber) + "2", sockNumber);
+                            this.game.ba.sockImageName(sockNumber) + "2", sockNumber, .10);
 
      sockList.push(lostSock);
-    },
-    sockImageName: function(num){
-      if (num==1){
-        return 'blueflower';
-      }
-      if (num==2){
-        return 'lily';
-      }
-      if (num==3){
-        return 'parasols';
-      }
-      if (num==4){
-        return 'purple';
-      }
     },
     generateLaundry: function(){
       var maxTileslong = (this.game.width/64)-1;
@@ -148,7 +134,7 @@ var playerLaneY;
         if (socky.sockNumber()== mysock.sockNumber()){
 
           var sock1 = new UnpairedSock(this.game, 35 + (unpairedSockInterval * (mysock.sockNumber() -1)), 55,
-                                      this.sockImageName(mysock.sockNumber()) + "1");
+                                      this.game.ba.sockImageName(mysock.sockNumber()) + "1");
 
           this.game.ba.numberOfSocksMatched += 1;
           socky.destroy();

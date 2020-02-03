@@ -4,11 +4,13 @@ const SPRITE_SIZE=128;
 class LostSock extends Phaser.Sprite {
 
   //initialization code in the constructor
-  constructor(game, x, y, name, socknum) {
+  constructor(game, x, y, name, socknum, scale) {
       super(game, x, y, name, 0);
       this.sockNum = socknum;
       game.physics.enable(this, Phaser.Physics.ARCADE);
-      this.scale.setTo(.10,.10);
+      this.scale.setTo(scale,scale);
+      var rotationangle = game.rnd.integerInRange(-180, 180);
+      this.angle = rotationangle;
       this.frame = 0;
       game.add.existing(this);
       //this.body.velocity.y = MAX_SPEED;
@@ -20,6 +22,8 @@ class LostSock extends Phaser.Sprite {
 sockNumber(){
   return this.sockNum;
 }
+
+
 
   //Code ran on each frame of game
   /*update() {
