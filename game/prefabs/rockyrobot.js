@@ -20,7 +20,7 @@ class RockyRobot extends Phaser.Sprite {
       game.add.existing(this);
       // Set Anchor to the center of your sprite
       //this.anchor.setTo(.5);
-
+      this.facing = 'left';
 //dino-chuck-roar
       //this.wallCollisionSound = this.game.add.audio('wall-bump')
       //this.wallCollisionSound.volume = .7
@@ -56,13 +56,13 @@ class RockyRobot extends Phaser.Sprite {
       //return;
     // } else {
     //   this.digging.stop()
-    }
-    /*if (this.game.global.input.player.one.left.isDown)
+    //}
+    if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT) || this.game.input.keyboard.isDown(Phaser.Keyboard.A))
     {
 
-      if (this.animations.currentAnim.name !="run" || this.animations.currentAnim.isPlaying==false){
-        this.animations.play("run");
-      }
+      //if (this.animations.currentAnim.name !="run" || this.animations.currentAnim.isPlaying==false){
+      //  this.animations.play("run");
+      //}
 
       if (this.facing == 'right'){
         // Invert scale.x to flip left/right
@@ -72,15 +72,15 @@ class RockyRobot extends Phaser.Sprite {
       this.body.velocity.x -= ACCELERATION
       this.body.velocity.x = Math.max(this.body.velocity.x, -MAX_VELOCITY)
     }
-    else if (this.game.global.input.player.one.right.isDown)
+    else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) || this.game.input.keyboard.isDown(Phaser.Keyboard.D))
     {
       // if(!this.walkingSound.isPlaying){
       //   this.walkingSound.play()
       // }
       //
-      if (this.animations.currentAnim.name !="run" || this.animations.currentAnim.isPlaying==false){
-        this.animations.play("run");
-      }
+      //if (this.animations.currentAnim.name !="run" || this.animations.currentAnim.isPlaying==false){
+      //  this.animations.play("run");
+      //}
       if (this.facing == 'left'){
         // Invert scale.x to flip left/right
         this.scale.x *= -1;
@@ -90,6 +90,16 @@ class RockyRobot extends Phaser.Sprite {
       this.body.velocity.x += ACCELERATION
       this.body.velocity.x = Math.min(this.body.velocity.x, MAX_VELOCITY)
     }
+    else if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP) || this.game.input.keyboard.isDown(Phaser.Keyboard.W))
+    {
+          this.body.velocity.y -= ACCELERATION
+          this.body.velocity.y = Math.min(this.body.velocity.y, MAX_VELOCITY)
+    }
+    else if (this.game.input.keyboard.isDown(Phaser.Keyboard.DOWN) || this.game.input.keyboard.isDown(Phaser.Keyboard.S))
+    {
+          this.body.velocity.y += ACCELERATION
+          this.body.velocity.y = Math.min(this.body.velocity.y, MAX_VELOCITY)
+    }
     else
     {
         if (this.body.velocity.x > 0) {
@@ -97,14 +107,19 @@ class RockyRobot extends Phaser.Sprite {
         } else if (this.body.velocity.x < 0) {
           this.body.velocity.x += ACCELERATION
         }
-       if (this.animations.currentAnim.name =="run" && this.animations.currentAnim.isPlaying==true && this.body.velocity.x ==0){
-         this.animations.currentAnim.stop();
-       }
+        if (this.body.velocity.y > 0) {
+          this.body.velocity.y -= ACCELERATION
+        } else if (this.body.velocity.y < 0) {
+          this.body.velocity.y += ACCELERATION
+        }
+       //if (this.animations.currentAnim.name =="run" && this.animations.currentAnim.isPlaying==true && this.body.velocity.x ==0){
+        // this.animations.currentAnim.stop();
+       //}
     }
     if (this.left < 0 || this.right > this.game.width + this.width) {
       this.body.velocity.x = 0
     }
-  }*/
+  }
 
 
 

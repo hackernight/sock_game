@@ -32,8 +32,8 @@ var playerLaneY;
       this.game.physics.arcade.enable(robotKid);
       robotKid.body.collideWorldBounds = true;
       robotKid.body.bounce.setTo(1,1);
-      robotKid.body.velocity.x = this.game.rnd.integerInRange(-500,500);
-      robotKid.body.velocity.y = this.game.rnd.integerInRange(-500,500);
+      //robotKid.body.velocity.x = this.game.rnd.integerInRange(-500,500);
+      //robotKid.body.velocity.y = this.game.rnd.integerInRange(-500,500);
 
       robotKid.events.onInputDown.add(this.clickListener, this);
     },
