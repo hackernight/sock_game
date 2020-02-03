@@ -1,4 +1,4 @@
-
+import BackgroundImage from '../prefabs/backgroundImage'
 'use strict';
 function GameOver() {}
 
@@ -7,19 +7,23 @@ GameOver.prototype = {
 
   },
   create: function () {
-    var style = { font: '65px Arial', fill: '#ffffff', align: 'center'};
-    this.titleText = this.game.add.text(this.game.world.centerX,100, 'Game Over!', style);
-    this.titleText.anchor.setTo(0.5, 0.5);
 
-    this.congratsText = this.game.add.text(this.game.world.centerX, 200, 'You Win!', { font: '32px Arial', fill: '#ffffff', align: 'center'});
-    this.congratsText.anchor.setTo(0.5, 0.5);
-
-    this.instructionText = this.game.add.text(this.game.world.centerX, 300, 'Click To Play Again', { font: '16px Arial', fill: '#ffffff', align: 'center'});
-    this.instructionText.anchor.setTo(0.5, 0.5);
+    var backgroundImage;
+    if (this.game.ba.lose==true){
+      backgroundImage = "";
+    }
+    if (this.game.ba.win==true){
+      backgroundImage = "victory2"
+    }
+    new BackgroundImage(this.game, backgroundImage);
+    //reset variables, either condition
+    this.game.ba.level=1;
+    this.game.ba.win = false;
+    this.game.ba.lose = false;
   },
   update: function () {
     if(this.game.input.activePointer.justPressed()) {
-      this.game.state.start('play');
+      this.game.state.start('menu');
     }
   }
 };

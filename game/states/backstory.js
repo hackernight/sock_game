@@ -26,11 +26,11 @@ Backstory.prototype = {
   update: function () {
     if(this.game.input.activePointer.justPressed()) {
       this.game.ba.level = this.game.ba.level+1;
-      if (this.game.ba.level < 5){
+      if (this.game.ba.level < 6){
         this.game.state.start('play');
       }
       else{
-
+        this.game.ba.win=true;
         this.game.state.start('gameover');
       }
     }
@@ -49,7 +49,7 @@ Backstory.prototype = {
       return 'backstory4';
     }
     if (this.game.ba.level == 5){
-      return 'victory';
+      return 'victory1';
     }
   }
 };

@@ -130,7 +130,8 @@ var playerLaneY;
       this.game.state.start('backstory');
     },
     loseGame: function(exit, rocky){
-      this.game.state.start('gameoverLose');
+      this.game.ba.lose=true;
+      this.game.state.start('gameover');
     }
   };
 
