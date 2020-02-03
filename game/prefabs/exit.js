@@ -11,6 +11,7 @@ class Exit extends Phaser.Sprite {
       this.scale.setTo(.25,.25);
       game.add.existing(this);
       //this.body.velocity.y = MAX_SPEED;
+      this.body.setSize(this.body.width * .25, this.body.height * .25, 256, 256);
       // Set Anchor to the center of your sprite
       this.anchor.setTo(.5);
 
