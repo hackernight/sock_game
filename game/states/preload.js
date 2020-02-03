@@ -32,6 +32,7 @@ Preload.prototype = {
     this.game.load.image('backstory1','../assets/images/cutscenes/backstory1_happyfamily.png')
     this.game.load.image('backstory2','../assets/images/cutscenes/backstory2_newshoes.png')
     this.game.load.image('backstory3','../assets/images/cutscenes/backstory3_inringdefeat.png')
+    this.game.load.image('backstory4','../assets/images/cutscenes/backstory4_missingSock.png')
     this.game.load.image('victory1','../assets/images/cutscenes/victory.png')
     this.game.load.image('victory2','../assets/images/cutscenes/victory2.png')
 

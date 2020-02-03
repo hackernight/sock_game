@@ -8,6 +8,9 @@ Backstory.prototype = {
 
   },
   create: function () {
+    if (this.game.ba.numberOfSocksMatched == this.game.ba.numberOfSocksThisLevel){
+      this.game.ba.level = this.game.ba.level+1;
+    }
 
     var background = this.getBackgroundImage();
     console.log("Background image is " + background)
@@ -25,13 +28,11 @@ Backstory.prototype = {
   },
   update: function () {
     if(this.game.input.activePointer.justPressed()) {
-      if (this.game.ba.numberOfSocksMatched == this.game.ba.numberOfSocksThisLevel){
-        this.game.ba.level = this.game.ba.level+1;
-      }
+
       this.game.ba.numberOfSocksMatched = 0;
       this.game.ba.numberOfSocksThisLevel = this.socksToMatchForLevel(this.game.ba.level);
 
-      if (this.game.ba.level < 6){
+      if (this.game.ba.level < 5){
         this.game.state.start('play');
       }
       else{
