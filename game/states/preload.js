@@ -27,6 +27,8 @@ Preload.prototype = {
     this.game.load.image('clothespile2','../assets/images/obstacles/clothespile2.png')
 
 
+    this.game.load.image('shockedrobot','../assets/images/player/shockedRobot.png')
+
     this.game.load.image('backstory1','../assets/images/cutscenes/backstory1_happyfamily.png')
     this.game.load.image('backstory2','../assets/images/cutscenes/backstory2_newshoes.png')
     this.game.load.image('backstory3','../assets/images/cutscenes/backstory3_inringdefeat.png')

@@ -10,7 +10,7 @@ GameOver.prototype = {
 
     var backgroundImage;
     if (this.game.ba.lose==true){
-      backgroundImage = "";
+      backgroundImage = "shockedrobot";
     }
     if (this.game.ba.win==true){
       backgroundImage = "victory2"
