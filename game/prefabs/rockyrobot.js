@@ -7,10 +7,10 @@ const ACCELERATION = 25;
 class RockyRobot extends Phaser.Sprite {
 
   //initialization code in the constructor
-  constructor(game, y, frame) {
+  constructor(game, x, y, frame) {
       //y = y - (SPRITE_SIZE / 2)
       //y = y + 300
-      super(game, SPRITE_SIZE, y, 'kidrobot', frame);
+      super(game, x, y, 'kidrobot', frame);
 
 
       console.log("Beep Boop I am Bot")

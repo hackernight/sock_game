@@ -24,13 +24,13 @@ var playerLaneY;
     create: function() {
 
       this.generateSocksToMatch();
-      this.generateLaundry();
-      this.generatePuddles();
-      this.generateLostSocks();
       this.generateExit();
+      this.generatePuddles();
+      this.generateLaundry();
+      this.generateLostSocks();
 
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
-      robotKid = new RockyRobot(this.game, 100, 1);
+      robotKid = new RockyRobot(this.game, 130, 130);
       //this.sprite = this.game.add.sprite(this.game.width/2, this.game.height/2, 'kidrobot');
       //robotKid = true;
 
@@ -48,9 +48,16 @@ var playerLaneY;
 
       for (const laundry of laundryList) {
         this.game.physics.arcade.collide(robotKid, laundry)
+        for (const laundry2 of laundryList) {
+          this.game.physics.arcade.collide(laundry2, laundry)
+        }
       }
       for (const puddle of puddleList) {
         this.game.physics.arcade.overlap(robotKid, puddle, this.loseGame, null, this)
+
+        for (const laundry2 of laundryList) {
+          this.game.physics.arcade.collide(puddle, laundry2)
+        }
       }
     },
     generateSocksToMatch: function(){
@@ -64,9 +71,13 @@ var playerLaneY;
       laundryList=[];
       var laundryCount=20;
       for (let i =0; i<laundryCount; i++){
+        var sprite = 'clothespile1'
+        if (i%2==0) {
+          sprite = 'clothespile2';
+        }
           var laundry = new LaundryPile(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
                                  64*this.game.rnd.integerInRange(2, maxTileshigh),
-                                 'clothespile1');
+                                 sprite);
           laundryList.push(laundry);
         }
 
