@@ -50,14 +50,8 @@ class RockyRobot extends Phaser.Sprite {
   //Code ran on each frame of game
   update() {
     this.bringToTop()
-    //if (this.animations.currentAnim.name =="throw" && this.animations.currentAnim.isPlaying==true){
-      //this.body.velocity.x = 0;
-      //console.log('current anim: ', this.animations.currentAnim.name, ', isplaying = ', this.animations.currentAnim.isPlaying)
-      //return;
-    // } else {
-    //   this.digging.stop()
-    //}
-    if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT) || this.game.input.keyboard.isDown(Phaser.Keyboard.A))
+
+    if (this.movingLeft())
     {
 
       //if (this.animations.currentAnim.name !="run" || this.animations.currentAnim.isPlaying==false){
@@ -72,7 +66,7 @@ class RockyRobot extends Phaser.Sprite {
       this.body.velocity.x -= ACCELERATION
       this.body.velocity.x = Math.max(this.body.velocity.x, -MAX_VELOCITY)
     }
-    else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) || this.game.input.keyboard.isDown(Phaser.Keyboard.D))
+    if (this.movingRight())
     {
       // if(!this.walkingSound.isPlaying){
       //   this.walkingSound.play()
@@ -90,39 +84,53 @@ class RockyRobot extends Phaser.Sprite {
       this.body.velocity.x += ACCELERATION
       this.body.velocity.x = Math.min(this.body.velocity.x, MAX_VELOCITY)
     }
-    else if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP) || this.game.input.keyboard.isDown(Phaser.Keyboard.W))
+    if (this.movingUp())
     {
           this.body.velocity.y -= ACCELERATION
-          this.body.velocity.y = Math.min(this.body.velocity.y, MAX_VELOCITY)
+          this.body.velocity.y = Math.min(this.body.velocity.y, -MAX_VELOCITY)
     }
-    else if (this.game.input.keyboard.isDown(Phaser.Keyboard.DOWN) || this.game.input.keyboard.isDown(Phaser.Keyboard.S))
+    if (this.movingDown())
     {
           this.body.velocity.y += ACCELERATION
           this.body.velocity.y = Math.min(this.body.velocity.y, MAX_VELOCITY)
     }
-    else
-    {
-        if (this.body.velocity.x > 0) {
-          this.body.velocity.x -= ACCELERATION
-        } else if (this.body.velocity.x < 0) {
-          this.body.velocity.x += ACCELERATION
-        }
-        if (this.body.velocity.y > 0) {
-          this.body.velocity.y -= ACCELERATION
-        } else if (this.body.velocity.y < 0) {
-          this.body.velocity.y += ACCELERATION
-        }
-       //if (this.animations.currentAnim.name =="run" && this.animations.currentAnim.isPlaying==true && this.body.velocity.x ==0){
-        // this.animations.currentAnim.stop();
-       //}
+    if (!this.movingDown() && !this.movingUp()){
+      //lose vertical velocity
+      if (this.body.velocity.y > 0) {
+        this.body.velocity.y -= ACCELERATION
+      } else if (this.body.velocity.y < 0) {
+        this.body.velocity.y += ACCELERATION
+      }
     }
+    if (!this.movingRight() && !this.movingLeft()){
+      //lose horizontal velocity
+          if (this.body.velocity.x > 0) {
+            this.body.velocity.x -= ACCELERATION
+          } else if (this.body.velocity.x < 0) {
+            this.body.velocity.x += ACCELERATION
+          }
+    }
+
     if (this.left < 0 || this.right > this.game.width + this.width) {
       this.body.velocity.x = 0
     }
+    if (this.top < 0 || this.bottom > this.game.width + this.width) {
+      this.body.velocity.y = 0
+    }
   }
 
-
-
+movingUp(){
+  return (this.game.input.keyboard.isDown(Phaser.Keyboard.UP) || this.game.input.keyboard.isDown(Phaser.Keyboard.W));
+}
+movingDown(){
+  return (this.game.input.keyboard.isDown(Phaser.Keyboard.DOWN) || this.game.input.keyboard.isDown(Phaser.Keyboard.S));
+}
+movingRight(){
+  return(this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) || this.game.input.keyboard.isDown(Phaser.Keyboard.D));
+}
+movingLeft(){
+  return(this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT) || this.game.input.keyboard.isDown(Phaser.Keyboard.A));
+}
 
 }
 
