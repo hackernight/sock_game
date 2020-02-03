@@ -9,7 +9,8 @@ class LaundryPile extends Phaser.Sprite {
       game.physics.enable(this, Phaser.Physics.ARCADE);
       this.frame = 0;
       console.log("Laundry at " + x + ": " + y);
-      this.scale.setTo(.25,.25);
+      this.scale.setTo(.1,.1);
+      //this.body.immovable=true;
       game.add.existing(this);
       //this.body.velocity.y = MAX_SPEED;
       // Set Anchor to the center of your sprite
@@ -18,15 +19,14 @@ class LaundryPile extends Phaser.Sprite {
 }
 
   //Code ran on each frame of game
-  /*update() {
-    if (this.body.y < this.eggLane){
-      this.body.velocity.y += 10;
+  update() {
+    if (this.body.velocity.y!=0){
+      this.body.velocity.y = this.body.velocity.y/2;
     }
-    else {
-      this.body.velocity.y = 0;
-      this.body.y = this.eggLane;
+    if (this.body.velocity.x!=0){
+      this.body.velocity.x = this.body.velocity.y/2;
     }
-  }*/
+  }
 
 
 }

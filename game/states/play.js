@@ -8,9 +8,8 @@ const Exit = require('../prefabs/exit');
 
 const unpairedSockInterval = 64;
 
-var laundry1;
-var laundry2;
-var laundry3;
+
+var laundryList = [];
 var lostSock1;
 var lostSock2;
 var robotKid;
@@ -44,6 +43,10 @@ var playerLaneY;
       this.game.physics.arcade.overlap(lostSock1, robotKid, this.collideSock1, null, this);
       this.game.physics.arcade.overlap(lostSock2, robotKid, this.collideSock2, null, this);
       this.game.physics.arcade.overlap(exit, robotKid, this.collideExit, null, this);
+
+      for (const laundry of laundryList) {
+        this.game.physics.arcade.collide(robotKid, laundry)
+      }
     },
     clickListener: function() {
       this.game.state.start('gameover');
@@ -56,16 +59,16 @@ var playerLaneY;
       var maxTileslong = (this.game.width/64)-1;
       var maxTileshigh = (this.game.height/64)-1;
 
+      laundryList=[];
+      var laundryCount=20;
+      for (let i =0; i<laundryCount; i++){
+          var laundry = new LaundryPile(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
+                                 64*this.game.rnd.integerInRange(2, maxTileshigh),
+                                 'clothespile1');
+          laundryList.push(laundry);
+        }
 
-      laundry1 = new LaundryPile(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
-                             64*this.game.rnd.integerInRange(2, maxTileshigh),
-                             'clothespile1');
-     laundry2 = new LaundryPile(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
-                            64*this.game.rnd.integerInRange(2, maxTileshigh),
-                            'clothespile2');
-      laundry3 = new LaundryPile(this.game, 64*this.game.rnd.integerInRange(1, maxTileslong),
-                             64*this.game.rnd.integerInRange(2, maxTileshigh),
-                             'clothespile1');
+
     },
     generateLostSocks: function(){
       var maxTileslong = (this.game.width/64)-1;
