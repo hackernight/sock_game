@@ -25,7 +25,12 @@ Backstory.prototype = {
   },
   update: function () {
     if(this.game.input.activePointer.justPressed()) {
-      this.game.ba.level = this.game.ba.level+1;
+      if (this.game.ba.numberOfSocksMatched == this.game.ba.numberOfSocksThisLevel){
+        this.game.ba.level = this.game.ba.level+1;
+      }
+      this.game.ba.numberOfSocksMatched = 0;
+      this.game.ba.numberOfSocksThisLevel = this.socksToMatchForLevel(this.game.ba.level);
+
       if (this.game.ba.level < 6){
         this.game.state.start('play');
       }
@@ -34,6 +39,24 @@ Backstory.prototype = {
         this.game.state.start('gameover');
       }
     }
+  },
+  socksToMatchForLevel: function(level){
+    if (level ==5){
+      return 4;
+    }
+    return level;
+    /*if (level==1 || level ==2){
+      return 1;
+    }
+    if (level ==3){
+      return 2;
+    }
+    if (level ==4){
+      return 3;
+    }
+    if (level==5){
+      return 4;
+    }*/
   },
   getBackgroundImage: function(){
     if (this.game.ba.level == 1){

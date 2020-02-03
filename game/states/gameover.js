@@ -18,6 +18,8 @@ GameOver.prototype = {
     new BackgroundImage(this.game, backgroundImage);
     //reset variables, either condition
     this.game.ba.level=1;
+    this.game.ba.numberOfSocksMatched = 0;
+    this.game.ba.numberOfSocksThisLevel = 1;
     this.game.ba.win = false;
     this.game.ba.lose = false;
   },

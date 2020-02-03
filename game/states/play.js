@@ -63,13 +63,13 @@ var playerLaneY;
       sockList=[];
       this.generateSockPair(1);
 
-      if (this.game.ba.level > 2){
+      if (this.game.ba.numberOfSocksThisLevel > 1){
         this.generateSockPair(2);
       }
-      if (this.game.ba.level > 3){
+      if (this.game.ba.numberOfSocksThisLevel > 2){
         this.generateSockPair(3);
       }
-      if (this.game.ba.level > 4){
+      if (this.game.ba.numberOfSocksThisLevel > 3){
         this.generateSockPair(4);
       }
     },
@@ -150,7 +150,7 @@ var playerLaneY;
           var sock1 = new UnpairedSock(this.game, 35 + (unpairedSockInterval * (mysock.sockNumber() -1)), 55,
                                       this.sockImageName(mysock.sockNumber()) + "1");
 
-
+          this.game.ba.numberOfSocksMatched += 1;
           socky.destroy();
 
           //sockList.splice(i,1);

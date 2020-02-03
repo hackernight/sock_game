@@ -13,7 +13,9 @@ Boot.prototype = {
     this.game.ba = {
     level: 1,
     win: false,
-    lose: false
+    lose: false,
+    numberOfSocksThisLevel: 1,
+    numberOfSocksMatched: 0
   }
     this.game.state.start('preload');
   }
