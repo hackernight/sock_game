@@ -49,6 +49,8 @@ Preload.prototype = {
 
     this.load.audio('horn', ['assets/sound/Bike_Horn.wav']);
 
+    this.game.load.audio('menu-music', ['assets/sound/menu music.wav']);
+
   },
   create: function() {
     this.asset.cropEnabled = false;
