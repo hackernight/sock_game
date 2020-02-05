@@ -45,6 +45,7 @@ Menu.prototype = {
   },
   update: function() {
     if(this.game.input.activePointer.justPressed()) {
+      this.levelMusic.stop()
       this.game.state.start('backstory');
     }
   }

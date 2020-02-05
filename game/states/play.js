@@ -147,9 +147,11 @@ var playerLaneY;
     },
 
     collideExit: function(exit, rocky){
+      this.levelMusic.stop()
       this.game.state.start('backstory');
     },
     loseGame: function(exit, rocky){
+      this.levelMusic.stop()
       this.game.ba.lose=true;
       this.game.state.start('gameover');
     }

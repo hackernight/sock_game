@@ -49,6 +49,7 @@ Preload.prototype = {
 
     this.load.audio('horn', ['assets/sound/Bike_Horn.wav']);
 
+    this.game.load.audio('level-1-music', ['assets\sound\lvl1_music_system_sock.wav']);
     this.game.load.audio('menu-music', ['assets/sound/menu music.wav']);
 
   },
