@@ -40,6 +40,8 @@ var playerLaneY;
       robotKid.body.bounce.setTo(1,1);
       //robotKid.body.velocity.x = this.game.rnd.integerInRange(-500,500);
       //robotKid.body.velocity.y = this.game.rnd.integerInRange(-500,500);
+      this.levelMusic = this.game.add.audio('level-1-music')
+      this.levelMusic.loopFull(0.15)
 
     },
     update: function() {
