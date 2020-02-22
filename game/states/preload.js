@@ -57,6 +57,7 @@ Preload.prototype = {
 
     this.game.load.audio('backstory1-music', ['assets/sound/Happy_Intro.wav']);
     this.game.load.audio('backstory2-music', ['assets/sound/Happy_Intro_Update.wav']);
+    //while it is funnier if the saddest backstory is that his mom can't find a sock, it makes more sense this way
     this.game.load.audio('backstory4-music', ['assets/sound/Sad_intro.wav']);
     this.game.load.audio('backstory3-music', ['assets/sound/Other_music.wav']);
 

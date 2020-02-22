@@ -44,6 +44,7 @@ var playerLaneY;
       this.levelMusic.loopFull(0.15)
 
       this.getSockMusic = this.game.add.audio('item-get-music');
+      this.getSockMusic.volume = .25;
 
     },
     update: function() {
