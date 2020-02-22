@@ -51,6 +51,14 @@ Preload.prototype = {
 
     this.game.load.audio('level-1-music', ['assets/sound/lvl1_music_system_sock.wav']);
     this.game.load.audio('menu-music', ['assets/sound/menu music.wav']);
+    //this.game.load.audio('death-music', ['assets/sound/Death_Music.wav']);
+    this.game.load.audio('gameover-lose-music', ['assets/sound/Sad_game_over.wav']);
+    this.game.load.audio('gameover-win-music', ['assets/sound/Victory_Theme.wav']);
+
+    this.game.load.audio('backstory1-music', ['assets/sound/Happy_Intro.wav']);
+    this.game.load.audio('backstory2-music', ['assets/sound/Happy_Intro_Update.wav']);
+    this.game.load.audio('backstory4-music', ['assets/sound/Sad_intro.wav']);
+    this.game.load.audio('backstory3-music', ['assets/sound/Other_music.wav']);
 
   },
   create: function() {

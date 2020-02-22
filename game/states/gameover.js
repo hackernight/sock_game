@@ -11,9 +11,17 @@ GameOver.prototype = {
     var backgroundImage;
     if (this.game.ba.lose==true){
       backgroundImage = "shockedrobot";
+
+      this.game.levelMusic = this.game.add.audio('gameover-lose-music')
+      //this.game.levelMusic.loopFull(0.15)
+      this.game.levelMusic.volume = 3;
+      this.game.levelMusic.play();
     }
     if (this.game.ba.win==true){
       backgroundImage = "victory2"
+
+      //this.levelMusic = this.game.add.audio('gameover-win-music')
+      //this.levelMusic.loopFull(0.15)
     }
     new BackgroundImage(this.game, backgroundImage, .75);
     //reset variables, either condition
@@ -25,6 +33,7 @@ GameOver.prototype = {
   },
   update: function () {
     if(this.game.input.activePointer.justPressed()) {
+      this.game.levelMusic.stop();
       this.game.state.start('menu');
     }
   }

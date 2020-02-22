@@ -16,6 +16,10 @@ Backstory.prototype = {
     console.log("Background image is " + background)
     new BackgroundImage(this.game, background, .75);
 
+    this.game.levelMusic = this.game.add.audio(this.getBackgroundMusic());
+    this.game.levelMusic.volume = this.getBackgroundMusicVolume();
+
+    this.game.levelMusic.play()
     /*var style = { font: '65px Arial', fill: '#ffffff', align: 'center'};
     this.titleText = this.game.add.text(this.game.world.centerX,100, 'Backstory', style);
     this.titleText.anchor.setTo(0.5, 0.5);
@@ -34,6 +38,7 @@ Backstory.prototype = {
 
       if (this.game.ba.level < 5){
         this.game.state.start('play');
+        this.game.levelMusic.stop();
       }
       else{
         this.game.ba.win=true;
@@ -74,6 +79,41 @@ Backstory.prototype = {
     }
     if (this.game.ba.level == 5){
       return 'victory1';
+    }
+  },
+  getBackgroundMusic: function(){
+    if (this.game.ba.level == 1){
+      return 'backstory1-music';
+    }
+    if (this.game.ba.level == 2){
+      return 'backstory2-music';
+    }
+    if (this.game.ba.level == 3){
+      return 'backstory3-music';
+    }
+    if (this.game.ba.level == 4){
+      return 'backstory4-music';
+    }
+    if (this.game.ba.level == 5){
+      return 'gameover-win-music';
+    }
+  },
+  //rebalancing is for chumps
+  getBackgroundMusicVolume: function(){
+    if (this.game.ba.level == 1){
+      return 0.25; //deafening...
+    }
+    if (this.game.ba.level == 2){
+      return .25;
+    }
+    if (this.game.ba.level == 3){
+      return .25;
+    }
+    if (this.game.ba.level == 4){
+      return .25;
+    }
+    if (this.game.ba.level == 5){
+      return .25;
     }
   }
 };

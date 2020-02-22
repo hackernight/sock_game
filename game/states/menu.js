@@ -27,8 +27,8 @@ Menu.prototype = {
     //this.instructionsText = this.game.add.text(this.game.world.centerX, 400, 'Match the socks and leave the dryer!', { font: '16px Arial', fill: '#ffffff', align: 'center'});
     //this.instructionsText.anchor.setTo(0.5, 0.5);
 
-    this.levelMusic = this.game.add.audio('menu-music')
-    this.levelMusic.loopFull(0.15)
+    this.game.levelMusic = this.game.add.audio('menu-music')
+    this.game.levelMusic.loopFull(0.15)
 
     this.sprite.angle = -20;
     this.game.add.tween(this.sprite).to({angle: 20}, 1000, Phaser.Easing.Linear.NONE, true, 0, 1000, true);
@@ -45,7 +45,7 @@ Menu.prototype = {
   },
   update: function() {
     if(this.game.input.activePointer.justPressed()) {
-      this.levelMusic.stop()
+      this.game.levelMusic.stop()
       this.game.state.start('backstory');
     }
   }
