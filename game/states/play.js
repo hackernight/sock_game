@@ -43,6 +43,8 @@ var playerLaneY;
       this.levelMusic = this.game.add.audio('level-1-music')
       this.levelMusic.loopFull(0.15)
 
+      this.getSockMusic = this.game.add.audio('item-get-music');
+
     },
     update: function() {
       for (const sock of sockList) {
@@ -131,6 +133,7 @@ var playerLaneY;
     },
     collideSock: function(rocky,socky ){
 
+      this.getSockMusic.play();
       for (let i=sockList.length-1; i>=0; i--){
         let mysock = sockList[i];
         if (socky.sockNumber()== mysock.sockNumber()){

@@ -60,6 +60,7 @@ Preload.prototype = {
     this.game.load.audio('backstory4-music', ['assets/sound/Sad_intro.wav']);
     this.game.load.audio('backstory3-music', ['assets/sound/Other_music.wav']);
 
+    this.game.load.audio('item-get-music', ['assets/sound/Item_get.wav']);
   },
   create: function() {
     this.asset.cropEnabled = false;
